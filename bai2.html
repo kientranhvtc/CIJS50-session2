@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+        class Person{
+            name;
+            age;
+            sex;
+            address;
+            
+            constructor(name, age, sex, address){
+                this.name = name;
+                this.age = age;
+                this.sex = sex;
+                this.address = address;
+            }
+
+            speak(){
+                console.log(`Xin chào`);
+            }
+
+            introduce(){
+                console.log(`
+                Tôi tên là ${this.name}
+                Năm nay tôi ${this.age}
+                Giới tính ${this.sex}
+                Tôi sống ở ${this.address}
+                `);
+            }
+        }
+
+
+        class Crush extends Person{
+            favourites;
+            appearance;
+            constructor(name, age, address, favourites, appearance){
+                super(name, age, 'Nữ', address);
+                this.favourites = favourites;
+                this.appearance = appearance;
+                
+            }
+            speak(){
+                console.log(`Em xin lỗi chúng ta chỉ là bạn`)
+            }
+        }
+
+        class Ex extends Person{
+            appearance;
+            constructor(name, age, address, appearance){
+                super(name, age, 'Nữ', address);
+                this.appearance = appearance;
+            }
+            speak(){
+                console.log(`Lật mặt nhanh như người yêu cũ`)
+            }
+        }
+
+
+        class list {
+                    owner; 
+                    persons = [];
+                    constructor(owner, persons) {
+                        this.owner = owner;
+                        this.persons = persons;
+                    }
+                    showAll() {
+                        let person = this.persons;
+                        let i = 0;
+                        while (true) {
+                            if (person[i] !== undefined) {
+                                if (person[i].favourites == undefined) {
+                                    console.log(`Tên người yêu cũ: ${person[i].name}, Tuổi: ${person[i].age}, Địa chỉ: ${person[i].address}, Nhan sắc: ${person[i].appearance}`);
+                                } 
+                                else {
+                                    console.log(`Tên crush: ${person[i].name}, Tuổi: ${person[i].age}, Địa chỉ: ${person[i].address}, Sở thích ${person[i].favourites}, Nhan sắc: ${person[i].appearance}`);
+                                }
+                                i++;
+                            } 
+                            else break;
+                        }
+                    }
+                    addPerson(person) {
+                        if(person == "Crush"){                                  
+                          alert('Nhập thông tin crush!');
+                          let name = prompt('Tên');
+                          let age = prompt('Tuổi');
+                          let address = prompt('Địa chỉ');
+                          let favourites = prompt('Sở thích');
+                          let appearance = prompt('Nhan sắc');
+                          let cr = new Crush(name, age, address, favourites, appearance);
+                          this.persons.push(cr);
+                        }
+                        if(person == "Ex"){
+                          alert('Nhập thông tin người yêu cũ!');
+                          let name = prompt('Tên');
+                          let age = prompt('Tuổi');
+                          let address = prompt('Địa chỉ');
+                          let appearance = prompt('Nhan sắc');
+                          let ex = new Ex(name, age, address, appearance);
+                          this.persons.push(ex);
+                        }
+                    }
+                    
+        }
+
+        let input = prompt('Tên?');
+        let person = [];
+        let listPerson = new list(input, person);
+        while (true) {
+            let key = prompt(
+                `Xin chào ${input}, đây là chương trình quản lý danh sách Crush, NYC. 
+                Nhấn phím 1 để xem danh sách
+                Nhấn phím 2 để thêm crush
+                Nhấn phím 3 để thêm người yêu cũ`);
+            if (key == '1') {
+                listPerson.showAll();
+            } 
+            else if (key == '2') {
+                listPerson.addPerson("Crush");
+            } 
+            else if (key == '3') {
+                listPerson.addPerson("Ex");
+            } 
+            else { break }
+        }
+        console.log(person[1]);
+  </script>
+</body>
+</html>

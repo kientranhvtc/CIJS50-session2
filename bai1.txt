@@ -1,0 +1,2 @@
+Setter là 1 phương thức để thiết lập giá trị cho biến
+Để khởi tạo ta thêm từ khóa Set vào ngay trước hàm khai báo để biến hàm đó thành Setter
